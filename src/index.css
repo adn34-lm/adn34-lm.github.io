@@ -190,15 +190,28 @@
 /* ── Spotlight ── */
 [data-theme='light'] .spotlight { opacity: 0.12; }
 
-/* ── Blog section gradient background in light mode ── */
-[data-theme='light'] #blog {
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%) !important;
+/* ── Services + Blog: transparent to show MeshGradient ── */
+[data-theme='light'] #servicios,
+[data-theme='dark'] #servicios {
+  background: transparent !important;
+}
+[data-theme='light'] #servicios .bg-black\/\[0\.96\],
+[data-theme='dark'] #servicios .bg-black\/\[0\.96\] {
+  background: transparent !important;
+}
+[data-theme='light'] #blog,
+[data-theme='dark'] #blog {
+  background: transparent !important;
 }
 
-/* ── Blog cards: visible bg with shadow ── */
+/* Semi-transparent cards in light mode so MeshGradient shows */
 [data-theme='light'] #blog article {
-  background: #ffffff;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(4px);
+}
+[data-theme='light'] #servicios .bg-dark-900\/60 {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
 }
 
 /* ── Services card icon bg ── */

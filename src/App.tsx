@@ -30,9 +30,23 @@ export default function App() {
           <main>
             <HeroSection />
             <SectionDivider />
-            <ServicesSection />
+
+            <div className="relative overflow-hidden">
+              <OptimizedMeshGradient />
+              <div className="relative z-10">
+                <ServicesSection />
+              </div>
+            </div>
+
             <SectionDivider />
-            <BlogSection />
+
+            <div className="relative overflow-hidden">
+              <OptimizedMeshGradient />
+              <div className="relative z-10">
+                <BlogSection />
+              </div>
+            </div>
+
             <SectionDivider />
 
             <div className="relative overflow-hidden">
