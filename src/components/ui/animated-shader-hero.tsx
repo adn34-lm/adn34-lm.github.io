@@ -297,7 +297,7 @@ const Hero: React.FC<HeroProps> = ({
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full object-contain touch-none"
-        style={{ background: isLight ? '#eff6ff' : 'black' }}
+        style={{ background: isLight ? '#f0f7ff' : 'black' }}
       />
 
       <div className={`absolute inset-0 z-10 flex flex-col items-center justify-center ${isLight ? 'text-gray-900' : 'text-white'}`}>
@@ -453,16 +453,16 @@ float clouds(vec2 p) {
 }
 void main(void) {
   vec2 uv=(FC-.5*R)/MN,st=uv*vec2(2,1);
-  vec3 col=vec3(0.85,0.90,1.0);
+  vec3 col=vec3(0.92,0.95,1.0);
   float bg=clouds(vec2(st.x+T*.5,-st.y));
   uv*=1.-.3*(sin(T*.2)*.5+.5);
   for (float i=1.; i<12.; i++) {
     uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
     vec2 p=uv; float d=length(p);
-    col-=.025/d*(cos(sin(i)*vec3(2.0,1.5,0.5))+1.)*vec3(0.02,0.06,0.15);
+    col+=.006/d*(cos(sin(i)*vec3(0.5,1.5,2.5))+1.)*vec3(0.0,0.12,0.4);
     float b=noise(i+p+bg*1.731);
-    col-=.012*b/length(max(p,vec2(b*p.x*.02,p.y)))*vec3(0.02,0.06,0.15);
-    col=mix(col,vec3(0.90,bg*.78,bg*.70),d*.4);
+    col+=.004*b/length(max(p,vec2(b*p.x*.02,p.y)))*vec3(0.0,0.12,0.4);
+    col=mix(col,vec3(0.94,0.96,1.0),d*.4);
   }
   O=vec4(col,1);
 }`;
