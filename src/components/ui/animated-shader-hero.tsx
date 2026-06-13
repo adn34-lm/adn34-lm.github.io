@@ -453,16 +453,16 @@ float clouds(vec2 p) {
 }
 void main(void) {
   vec2 uv=(FC-.5*R)/MN,st=uv*vec2(2,1);
-  vec3 col=vec3(0.92,0.95,1.0);
+  vec3 col=vec3(0.65,0.78,0.95);
   float bg=clouds(vec2(st.x+T*.5,-st.y));
   uv*=1.-.3*(sin(T*.2)*.5+.5);
   for (float i=1.; i<12.; i++) {
     uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
     vec2 p=uv; float d=length(p);
-    col+=.006/d*(cos(sin(i)*vec3(0.5,1.5,2.5))+1.)*vec3(0.0,0.12,0.4);
+    col+=.012/d*(cos(sin(i)*vec3(0.5,1.5,2.5))+1.)*vec3(0.0,0.25,0.6);
     float b=noise(i+p+bg*1.731);
-    col+=.004*b/length(max(p,vec2(b*p.x*.02,p.y)))*vec3(0.0,0.12,0.4);
-    col=mix(col,vec3(0.94,0.96,1.0),d*.4);
+    col+=.006*b/length(max(p,vec2(b*p.x*.02,p.y)))*vec3(0.0,0.25,0.6);
+    col=mix(col,vec3(0.70,0.82,0.98),d*.5);
   }
   O=vec4(col,1);
 }`;
