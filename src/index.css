@@ -70,7 +70,7 @@
 }
 [data-theme='light'] .bg-black\/\[0\.96\],
 [data-theme='light'] .bg-black\/\[0\.5\] {
-  background: #f8fafc !important;
+  background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 40%, #f8fafc 100%) !important;
 }
 
 /* ── Text ── */
@@ -189,6 +189,17 @@
 
 /* ── Spotlight ── */
 [data-theme='light'] .spotlight { opacity: 0.12; }
+
+/* ── Blog section gradient background in light mode ── */
+[data-theme='light'] #blog {
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%) !important;
+}
+
+/* ── Blog cards: visible bg with shadow ── */
+[data-theme='light'] #blog article {
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+}
 
 /* ── Services card icon bg ── */
 [data-theme='light'] .bg-blue-500\/10 { background: rgba(0, 102, 255, 0.06); }
