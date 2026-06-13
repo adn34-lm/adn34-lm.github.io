@@ -7,28 +7,28 @@ const posts = [
     excerpt: 'Migrating our clients to edge-first architecture reduced TTFB from 1.2s to under 200ms. Here is the exact playbook we followed.',
     date: 'Jun 10, 2026',
     category: 'Engineering',
-    gradient: 'from-blue-600 to-blue-400',
+    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop',
   },
   {
     title: 'Building a Real-Time Dashboard That Handles 10M Events/Day',
     excerpt: 'A deep dive into the tech stack — WebSockets, Redis Streams, and React Query — that powers our analytics platform.',
     date: 'May 28, 2026',
     category: 'Case Study',
-    gradient: 'from-blue-500 to-cyan-400',
+    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
   },
   {
     title: 'Why Your SaaS Needs a Design System (and How to Start)',
     excerpt: 'Components, tokens, and documentation — the three pillars that saved our team 40% in development time.',
     date: 'May 15, 2026',
     category: 'Design',
-    gradient: 'from-indigo-600 to-blue-500',
+    img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
   },
   {
     title: 'Shipping an MVP in 14 Days: Our Full-Stack Blueprint',
     excerpt: 'From concept to production — the frameworks, tools, and processes we use to launch software fast without cutting corners.',
     date: 'Apr 29, 2026',
     category: 'Process',
-    gradient: 'from-blue-700 to-blue-400',
+    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
   },
 ]
 
@@ -54,12 +54,14 @@ export default function BlogSection() {
           {posts.map((post, i) => (
             <Reveal key={post.title}>
               <article className="group relative bg-dark-900/60 border border-blue-900/30 rounded-2xl overflow-hidden hover:border-blue-500/40 transition-all duration-500">
-                {/* Image area */}
-                <div className={`relative h-48 sm:h-56 bg-gradient-to-br ${post.gradient} flex items-center justify-center overflow-hidden`}>
-                  <div className="absolute inset-0 bg-black/10" />
-                  <span className="text-white/20 text-8xl font-bold select-none">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
+                <div className="relative h-48 sm:h-56 overflow-hidden">
+                  <img
+                    src={post.img}
+                    alt={post.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/60 via-transparent to-transparent" />
                 </div>
 
                 <div className="p-6 sm:p-8">

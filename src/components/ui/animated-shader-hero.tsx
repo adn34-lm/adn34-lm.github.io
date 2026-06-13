@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { useTheme } from '@/hooks/use-theme';
 
 interface HeroProps {
   trustBadge?: {
@@ -23,7 +24,9 @@ interface HeroProps {
   className?: string;
 }
 
-const useShaderBackground = () => {
+const useShaderBackground = (theme: 'dark' | 'light') => {
+  const rendererRef = useRef<WebGLRenderer | null>(null);
+  const pointersRef = useRef<PointerHandler | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationFrameRef = useRef<number | null>(null);
 
@@ -53,7 +56,7 @@ void main(){gl_Position=position;}`;
       this.scale = scale;
       this.gl = canvas.getContext('webgl2')!;
       this.gl.viewport(0, 0, canvas.width * scale, canvas.height * scale);
-      this.shaderSource = defaultShaderSource;
+      this.shaderSource = darkShaderSource;
     }
 
     updateShader(source: string) {
@@ -216,12 +219,15 @@ void main(){gl_Position=position;}`;
     canvas.height = window.innerHeight * dpr;
 
     const renderer = new WebGLRenderer(canvas, dpr);
+    rendererRef.current = renderer;
     const pointers = new PointerHandler(canvas, dpr);
+    pointersRef.current = pointers;
     renderer.setup();
     renderer.init();
 
-    if (renderer.test(defaultShaderSource) === null) {
-      renderer.updateShader(defaultShaderSource);
+    const source = theme === 'dark' ? darkShaderSource : lightShaderSource;
+    if (renderer.test(source) === null) {
+      renderer.updateShader(source);
     }
 
     const resize = () => {
@@ -266,6 +272,12 @@ void main(){gl_Position=position;}`;
     };
   }, []);
 
+  useEffect(() => {
+    if (!rendererRef.current) return;
+    const source = theme === 'dark' ? darkShaderSource : lightShaderSource;
+    rendererRef.current.updateShader(source);
+  }, [theme]);
+
   return canvasRef;
 };
 
@@ -276,30 +288,32 @@ const Hero: React.FC<HeroProps> = ({
   buttons,
   className = ""
 }) => {
-  const canvasRef = useShaderBackground();
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+  const canvasRef = useShaderBackground(theme);
 
   return (
-    <div className={`relative w-full h-screen overflow-hidden bg-black ${className}`}>
+    <div className={`relative w-full h-screen overflow-hidden ${isLight ? 'bg-blue-50' : 'bg-black'} ${className}`}>
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full object-contain touch-none"
-        style={{ background: 'black' }}
+        style={{ background: isLight ? '#f0f5ff' : 'black' }}
       />
 
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-white">
+      <div className={`absolute inset-0 z-10 flex flex-col items-center justify-center ${isLight ? 'text-gray-900' : 'text-white'}`}>
         {trustBadge && (
           <div className="mb-8 animate-fade-in-down">
-              <div className="flex items-center gap-2 px-6 py-3 bg-blue-500/10 backdrop-blur-md border border-blue-300/30 rounded-full text-sm">
+              <div className={`flex items-center gap-2 px-6 py-3 ${isLight ? 'bg-blue-100/60 border-blue-300/50' : 'bg-blue-500/10 border-blue-300/30'} backdrop-blur-md border rounded-full text-sm`}>
                 {trustBadge.icons && (
                   <div className="flex">
                     {trustBadge.icons.map((icon, index) => (
-                      <span key={index} className="text-blue-300">
+                      <span key={index} className={`${isLight ? 'text-blue-600' : 'text-blue-300'}`}>
                         {icon}
                       </span>
                     ))}
                   </div>
                 )}
-                <span className="text-blue-100">{trustBadge.text}</span>
+                <span className={isLight ? 'text-blue-700' : 'text-blue-100'}>{trustBadge.text}</span>
             </div>
           </div>
         )}
@@ -315,7 +329,7 @@ const Hero: React.FC<HeroProps> = ({
           </div>
 
           <div className="max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <p className="text-lg md:text-xl lg:text-2xl text-blue-100/90 font-light leading-relaxed">
+            <p className={`text-lg md:text-xl lg:text-2xl ${isLight ? 'text-gray-700' : 'text-blue-100/90'} font-light leading-relaxed`}>
               {subtitle}
             </p>
           </div>
@@ -333,7 +347,11 @@ const Hero: React.FC<HeroProps> = ({
               {buttons.secondary && (
                 <button
                   onClick={buttons.secondary.onClick}
-                  className="px-8 py-4 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-300/30 hover:border-blue-300/50 text-blue-100 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+                  className={`px-8 py-4 border rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm ${
+                    isLight
+                      ? 'bg-blue-100/60 hover:bg-blue-200/60 border-blue-300/50 hover:border-blue-400 text-blue-700'
+                      : 'bg-blue-500/10 hover:bg-blue-500/20 border-blue-300/30 hover:border-blue-300/50 text-blue-100'
+                  }`}
                 >
                   {buttons.secondary.text}
                 </button>
@@ -346,7 +364,7 @@ const Hero: React.FC<HeroProps> = ({
   );
 };
 
-const defaultShaderSource = `#version 300 es
+const darkShaderSource = `#version 300 es
 /*********
 * made by Matthias Hurrle (@atzedent)
 *
@@ -397,6 +415,54 @@ void main(void) {
     float b=noise(i+p+bg*1.731);
     col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)));
     col=mix(col,vec3(bg*.08,bg*.12,bg*.35),d);
+  }
+  O=vec4(col,1);
+}`;
+
+const lightShaderSource = `#version 300 es
+precision highp float;
+out vec4 O;
+uniform vec2 resolution;
+uniform float time;
+#define FC gl_FragCoord.xy
+#define T time
+#define R resolution
+#define MN min(R.x,R.y)
+float rnd(vec2 p) {
+  p=fract(p*vec2(12.9898,78.233));
+  p+=dot(p,p+34.56);
+  return fract(p.x*p.y);
+}
+float noise(in vec2 p) {
+  vec2 i=floor(p), f=fract(p), u=f*f*(3.-2.*f);
+  float a=rnd(i), b=rnd(i+vec2(1,0)), c=rnd(i+vec2(0,1)), d=rnd(i+1.);
+  return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);
+}
+float fbm(vec2 p) {
+  float t=.0, a=1.; mat2 m=mat2(1.,-.5,.2,1.2);
+  for (int i=0; i<5; i++) { t+=a*noise(p); p*=2.*m; a*=.5; }
+  return t;
+}
+float clouds(vec2 p) {
+  float d=1., t=.0;
+  for (float i=.0; i<3.; i++) {
+    float a=d*fbm(i*10.+p.x*.2+.2*(1.+i)*p.y+d+i*i+p);
+    t=mix(t,d,a); d=a; p*=2./(i+1.);
+  }
+  return t;
+}
+void main(void) {
+  vec2 uv=(FC-.5*R)/MN,st=uv*vec2(2,1);
+  vec3 col=vec3(1);
+  float bg=clouds(vec2(st.x+T*.5,-st.y));
+  uv*=1.-.3*(sin(T*.2)*.5+.5);
+  for (float i=1.; i<12.; i++) {
+    uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
+    vec2 p=uv; float d=length(p);
+    col+=.00125/d*(cos(sin(i)*vec3(0.6,0.8,1.0))+1.);
+    float b=noise(i+p+bg*1.731);
+    col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)));
+    col=mix(col,vec3(bg*.82+.1,bg*.88+.05,bg*.96),d);
   }
   O=vec4(col,1);
 }`;
