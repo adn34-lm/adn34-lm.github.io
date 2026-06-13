@@ -293,27 +293,27 @@ const Hero: React.FC<HeroProps> = ({
   const canvasRef = useShaderBackground(theme);
 
   return (
-    <div className={`relative w-full h-screen overflow-hidden ${isLight ? 'bg-red-50' : 'bg-black'} ${className}`}>
+    <div className={`relative w-full h-screen overflow-hidden ${isLight ? 'bg-blue-50' : 'bg-black'} ${className}`}>
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full object-contain touch-none"
-        style={{ background: isLight ? '#fef2f2' : 'black' }}
+        style={{ background: isLight ? '#eff6ff' : 'black' }}
       />
 
       <div className={`absolute inset-0 z-10 flex flex-col items-center justify-center ${isLight ? 'text-gray-900' : 'text-white'}`}>
         {trustBadge && (
           <div className="mb-8 animate-fade-in-down">
-              <div className={`flex items-center gap-2 px-6 py-3 ${isLight ? 'bg-red-100/60 border-red-300/50' : 'bg-blue-500/10 border-blue-300/30'} backdrop-blur-md border rounded-full text-sm`}>
+              <div className={`flex items-center gap-2 px-6 py-3 ${isLight ? 'bg-blue-50/80 border-blue-200' : 'bg-blue-500/10 border-blue-300/30'} backdrop-blur-md border rounded-full text-sm`}>
                 {trustBadge.icons && (
                   <div className="flex">
                     {trustBadge.icons.map((icon, index) => (
-                      <span key={index} className={`${isLight ? 'text-red-600' : 'text-blue-300'}`}>
+                      <span key={index} className={`${isLight ? 'text-blue-600' : 'text-blue-300'}`}>
                         {icon}
                       </span>
                     ))}
                   </div>
                 )}
-                <span className={isLight ? 'text-red-700' : 'text-blue-100'}>{trustBadge.text}</span>
+                <span className={isLight ? 'text-blue-700' : 'text-blue-100'}>{trustBadge.text}</span>
             </div>
           </div>
         )}
@@ -329,7 +329,7 @@ const Hero: React.FC<HeroProps> = ({
           </div>
 
           <div className="max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <p className={`text-lg md:text-xl lg:text-2xl ${isLight ? 'text-gray-700' : 'text-blue-100/90'} font-light leading-relaxed`}>
+            <p className={`text-lg md:text-xl lg:text-2xl ${isLight ? 'text-slate-700' : 'text-blue-100/90'} font-light leading-relaxed`}>
               {subtitle}
             </p>
           </div>
@@ -339,11 +339,7 @@ const Hero: React.FC<HeroProps> = ({
               {buttons.primary && (
                 <button
                   onClick={buttons.primary.onClick}
-                  className={`px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl ${
-                    isLight
-                      ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white hover:shadow-red-500/25'
-                      : 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white hover:shadow-blue-500/25'
-                  }`}
+                  className="px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
                 >
                   {buttons.primary.text}
                 </button>
@@ -353,7 +349,7 @@ const Hero: React.FC<HeroProps> = ({
                   onClick={buttons.secondary.onClick}
                   className={`px-8 py-4 border rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm ${
                     isLight
-                      ? 'bg-red-100/60 hover:bg-red-200/60 border-red-300/50 hover:border-red-400 text-red-700'
+                      ? 'bg-blue-50/80 hover:bg-blue-100/80 border-blue-200 hover:border-blue-300 text-blue-700'
                       : 'bg-blue-500/10 hover:bg-blue-500/20 border-blue-300/30 hover:border-blue-300/50 text-blue-100'
                   }`}
                 >
@@ -457,16 +453,16 @@ float clouds(vec2 p) {
 }
 void main(void) {
   vec2 uv=(FC-.5*R)/MN,st=uv*vec2(2,1);
-  vec3 col=vec3(1.0,0.95,0.95);
+  vec3 col=vec3(1.0,0.97,0.95);
   float bg=clouds(vec2(st.x+T*.5,-st.y));
   uv*=1.-.3*(sin(T*.2)*.5+.5);
   for (float i=1.; i<12.; i++) {
     uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
     vec2 p=uv; float d=length(p);
-    col+=.008/d*(cos(sin(i)*vec3(1.0,0.05,0.0))+1.);
+    col+=.006/d*(cos(sin(i)*vec3(0.2,0.5,1.0))+1.);
     float b=noise(i+p+bg*1.731);
-    col+=.006*b/length(max(p,vec2(b*p.x*.02,p.y)));
-    col=mix(col,vec3(1.0,bg*.2,bg*.12),d);
+    col+=.005*b/length(max(p,vec2(b*p.x*.02,p.y)));
+    col=mix(col,vec3(1.0,bg*.85,bg*.7),d);
   }
   O=vec4(col,1);
 }`;
