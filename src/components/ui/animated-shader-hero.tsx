@@ -453,16 +453,19 @@ float clouds(vec2 p) {
 }
 void main(void) {
   vec2 uv=(FC-.5*R)/MN,st=uv*vec2(2,1);
-  vec3 col=vec3(0.65,0.78,0.95);
+  vec3 light=vec3(.941,.969,1.),mid=vec3(.58,.77,.99),dark=vec3(.12,.25,.69);
+  vec3 col=light;
   float bg=clouds(vec2(st.x+T*.5,-st.y));
   uv*=1.-.3*(sin(T*.2)*.5+.5);
   for (float i=1.; i<12.; i++) {
-    uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
-    vec2 p=uv; float d=length(p);
-    col+=.012/d*(cos(sin(i)*vec3(0.5,1.5,2.5))+1.)*vec3(0.0,0.25,0.6);
+    uv+=.1*cos(i*vec2(.1+.01*i,.8)+i*i+T*.5+.1*uv.x);
+    vec2 p=uv;float d=length(p);
+    float s=(.008/d)*(cos(sin(i)*1.5)+1.);
+    col=mix(col,mix(mid,dark,s*.3),s*.2);
     float b=noise(i+p+bg*1.731);
-    col+=.006*b/length(max(p,vec2(b*p.x*.02,p.y)))*vec3(0.0,0.25,0.6);
-    col=mix(col,vec3(0.70,0.82,0.98),d*.5);
+    s=(.004/b)*(cos(sin(i)*.8)+1.);
+    col=mix(col,mix(mid,dark,s*.2),s*.15);
+    col=mix(col,mix(light,mid,.3),d*.3);
   }
   O=vec4(col,1);
 }`;
