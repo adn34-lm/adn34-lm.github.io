@@ -13,7 +13,7 @@ export default function FooterSection() {
           </div>
 
           <div className="flex items-center gap-6">
-            <a href="mailto:hello@lmstudio.dev" className="text-neutral-500 hover:text-blue-400 transition-colors" aria-label="Email">
+            <a href="mailto:lmstudiosss17@gmail.com" className="text-neutral-500 hover:text-blue-400 transition-colors" aria-label="Email">
               <Mail className="w-5 h-5" />
             </a>
           </div>
