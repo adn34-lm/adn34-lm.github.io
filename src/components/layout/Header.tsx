@@ -32,11 +32,11 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-dark-950/80 backdrop-blur-md border-b border-gold-900/30">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-dark-950/80 backdrop-blur-md border-b border-blue-900/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <a href="#inicio" className="text-2xl font-bold tracking-tight">
-            <span className="text-gold-400">LM</span>{' '}
+            <span className="text-blue-400">LM</span>{' '}
             <span className="text-white/80 font-light">STUDIO</span>
           </a>
 
@@ -47,8 +47,8 @@ export default function Header() {
                 href={link.href}
                 className={`text-sm uppercase tracking-widest transition-colors ${
                   active === link.href.slice(1)
-                    ? 'text-gold-400'
-                    : 'text-white/60 hover:text-gold-400'
+                    ? 'text-blue-400'
+                    : 'text-white/60 hover:text-blue-400'
                 }`}
               >
                 {link.label}
@@ -57,7 +57,7 @@ export default function Header() {
           </nav>
 
           <button
-            className="md:hidden text-white/80 hover:text-gold-400 transition-colors"
+            className="md:hidden text-white/80 hover:text-blue-400 transition-colors"
             onClick={() => setOpen(!open)}
           >
             {open ? <X size={24} /> : <Menu size={24} />}
@@ -66,7 +66,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-gold-900/30 bg-dark-950/95 backdrop-blur-md">
+        <div className="md:hidden border-t border-blue-900/30 bg-dark-950/95 backdrop-blur-md">
           <div className="px-4 py-4 space-y-3">
             {navLinks.map((link) => (
               <a
@@ -74,8 +74,8 @@ export default function Header() {
                 href={link.href}
                 className={`block text-sm uppercase tracking-widest transition-colors ${
                   active === link.href.slice(1)
-                    ? 'text-gold-400'
-                    : 'text-white/60 hover:text-gold-400'
+                    ? 'text-blue-400'
+                    : 'text-white/60 hover:text-blue-400'
                 }`}
                 onClick={() => setOpen(false)}
               >

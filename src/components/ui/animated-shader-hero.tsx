@@ -289,33 +289,33 @@ const Hero: React.FC<HeroProps> = ({
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-white">
         {trustBadge && (
           <div className="mb-8 animate-fade-in-down">
-            <div className="flex items-center gap-2 px-6 py-3 bg-gold-500/10 backdrop-blur-md border border-gold-300/30 rounded-full text-sm">
-              {trustBadge.icons && (
-                <div className="flex">
-                  {trustBadge.icons.map((icon, index) => (
-                    <span key={index} className="text-gold-300">
-                      {icon}
-                    </span>
-                  ))}
-                </div>
-              )}
-              <span className="text-gold-100">{trustBadge.text}</span>
+              <div className="flex items-center gap-2 px-6 py-3 bg-blue-500/10 backdrop-blur-md border border-blue-300/30 rounded-full text-sm">
+                {trustBadge.icons && (
+                  <div className="flex">
+                    {trustBadge.icons.map((icon, index) => (
+                      <span key={index} className="text-blue-300">
+                        {icon}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                <span className="text-blue-100">{trustBadge.text}</span>
             </div>
           </div>
         )}
 
         <div className="text-center space-y-6 max-w-5xl mx-auto px-4">
           <div className="space-y-2">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-gold-300 via-yellow-400 to-gold-500 bg-clip-text text-transparent animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-300 via-blue-400 to-blue-500 bg-clip-text text-transparent animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               {headline.line1}
             </h1>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-gold-400 via-yellow-300 to-gold-600 bg-clip-text text-transparent animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-400 via-blue-300 to-blue-600 bg-clip-text text-transparent animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               {headline.line2}
             </h1>
           </div>
 
           <div className="max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <p className="text-lg md:text-xl lg:text-2xl text-gold-100/90 font-light leading-relaxed">
+            <p className="text-lg md:text-xl lg:text-2xl text-blue-100/90 font-light leading-relaxed">
               {subtitle}
             </p>
           </div>
@@ -325,7 +325,7 @@ const Hero: React.FC<HeroProps> = ({
               {buttons.primary && (
                 <button
                   onClick={buttons.primary.onClick}
-                  className="px-8 py-4 bg-gradient-to-r from-gold-500 to-yellow-500 hover:from-gold-600 hover:to-yellow-600 text-black rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-gold-500/25"
+                  className="px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
                 >
                   {buttons.primary.text}
                 </button>
@@ -333,7 +333,7 @@ const Hero: React.FC<HeroProps> = ({
               {buttons.secondary && (
                 <button
                   onClick={buttons.secondary.onClick}
-                  className="px-8 py-4 bg-gold-500/10 hover:bg-gold-500/20 border border-gold-300/30 hover:border-gold-300/50 text-gold-100 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+                  className="px-8 py-4 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-300/30 hover:border-blue-300/50 text-blue-100 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm"
                 >
                   {buttons.secondary.text}
                 </button>

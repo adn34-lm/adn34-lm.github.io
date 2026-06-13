@@ -21,7 +21,7 @@ export default function OptimizedMeshGradient() {
     <div ref={ref} className="absolute inset-0 w-full h-full">
       <MeshGradient
         className="w-full h-full"
-        colors={["#000000", "#1a1a1a", "#0d0d0d", "#e8ae2e"]}
+        colors={["#000000", "#001a4d", "#000d26", "#0066FF"]}
         speed={visible ? (isMobile ? 0.3 : 0.5) : 0}
         minPixelRatio={isMobile ? 1 : 0.5}
         maxPixelCount={isMobile ? 2000000 : undefined}

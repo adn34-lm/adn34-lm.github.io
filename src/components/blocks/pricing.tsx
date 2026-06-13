@@ -53,7 +53,7 @@ export function Pricing({
           x: x / window.innerWidth,
           y: y / window.innerHeight,
         },
-        colors: ["#e8ae2e", "#d4941a", "#f3d98a", "#edc14f"],
+        colors: ["#0066FF", "#0052cc", "#66a3ff", "#3385ff"],
         ticks: 200,
         gravity: 1.2,
         decay: 0.94,
@@ -86,7 +86,7 @@ export function Pricing({
           />
         </Label>
         <span className={`text-sm font-medium ${!isMonthly ? "text-white" : "text-neutral-500"}`}>
-          Annual <span className="text-gold-400">(Save 20%)</span>
+          Annual <span className="text-blue-400">(Save 20%)</span>
         </span>
       </div>
 
@@ -116,8 +116,8 @@ export function Pricing({
             className={cn(
               `rounded-2xl border p-4 md:p-6 text-center relative backdrop-blur-sm`,
               plan.isPopular
-                ? "border-gold-500 border-2 bg-gold-500/5"
-                : "border-gold-900/30 bg-dark-900/60",
+                ? "border-blue-500 border-2 bg-blue-500/5"
+                : "border-blue-900/30 bg-dark-900/60",
               "flex flex-col",
               !plan.isPopular && "mt-0 md:mt-5",
               index === 0 || index === 2 ? "z-0" : "z-10",
@@ -126,7 +126,7 @@ export function Pricing({
             )}
           >
             {plan.isPopular && (
-              <div className="absolute top-0 right-0 bg-gold-500 py-0.5 px-2 rounded-bl-xl rounded-tr-xl flex items-center">
+              <div className="absolute top-0 right-0 bg-blue-500 py-0.5 px-2 rounded-bl-xl rounded-tr-xl flex items-center">
                 <Star className="text-dark-950 h-4 w-4 fill-current" />
                 <span className="text-dark-950 ml-1 font-sans font-semibold text-xs">
                   Popular
@@ -178,13 +178,13 @@ export function Pricing({
               <ul className="mt-5 gap-2 flex flex-col">
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-gold-400 mt-1 flex-shrink-0" />
+                    <Check className="h-4 w-4 text-blue-400 mt-1 flex-shrink-0" />
                     <span className="text-left text-neutral-300 text-sm">{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <hr className="w-full my-4 border-gold-900/30" />
+              <hr className="w-full my-4 border-blue-900/30" />
 
               <a
                 href={plan.href}
@@ -193,10 +193,10 @@ export function Pricing({
                     variant: plan.isPopular ? "default" : "outline",
                   }),
                   "group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter",
-                  "transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-gold-500 hover:ring-offset-1",
+                  "transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-blue-500 hover:ring-offset-1",
                   plan.isPopular
-                    ? "bg-gold-500 text-dark-950 hover:bg-gold-400"
-                    : "border-gold-500/30 text-gold-400 hover:bg-gold-500/10"
+                    ? "bg-blue-500 text-dark-950 hover:bg-blue-400"
+                    : "border-blue-500/30 text-blue-400 hover:bg-blue-500/10"
                 )}
               >
                 {plan.buttonText}

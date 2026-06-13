@@ -11,7 +11,7 @@ import { ReactLenis } from 'lenis/react';
 function SectionDivider() {
   return (
     <div className="relative h-16 bg-dark-900 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-dark-900 via-gold-500/5 to-dark-900" />
+      <div className="absolute inset-0 bg-gradient-to-b from-dark-900 via-blue-500/5 to-dark-900" />
     </div>
   );
 }

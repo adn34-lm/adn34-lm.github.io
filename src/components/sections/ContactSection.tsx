@@ -26,10 +26,10 @@ export default function ContactSection() {
       <section id="contacto" className="py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center py-16">
-            <div className="w-16 h-16 rounded-full bg-gold-500/10 flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
-              <Send className="w-8 h-8 text-gold-400" />
+            <div className="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
+              <Send className="w-8 h-8 text-blue-400" />
             </div>
-            <p className="text-gold-400 text-lg font-medium">
+            <p className="text-blue-400 text-lg font-medium">
               Message sent successfully! Our engineering team will get back to you shortly.
             </p>
           </div>
@@ -49,7 +49,7 @@ export default function ContactSection() {
             <p className="text-neutral-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">
               Have a breakthrough project in mind? Let's engineer something exceptional together.
             </p>
-            <div className="w-20 md:w-32 h-0.5 md:h-1 bg-gold-500 mx-auto mt-4 md:mt-6" />
+            <div className="w-20 md:w-32 h-0.5 md:h-1 bg-blue-500 mx-auto mt-4 md:mt-6" />
           </div>
         </Reveal>
 
@@ -67,7 +67,7 @@ export default function ContactSection() {
                 name="name"
                 placeholder="Your Name"
                 required
-                className="w-full px-4 py-3 bg-dark-950/80 backdrop-blur-sm border border-gold-900/30 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-gold-500/50 transition-colors"
+                className="w-full px-4 py-3 bg-dark-950/80 backdrop-blur-sm border border-blue-900/30 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors"
               />
             </div>
             <div>
@@ -76,7 +76,7 @@ export default function ContactSection() {
                 name="email"
                 placeholder="Your Email"
                 required
-                className="w-full px-4 py-3 bg-dark-950/80 backdrop-blur-sm border border-gold-900/30 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-gold-500/50 transition-colors"
+                className="w-full px-4 py-3 bg-dark-950/80 backdrop-blur-sm border border-blue-900/30 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors"
               />
             </div>
             <div>
@@ -85,13 +85,13 @@ export default function ContactSection() {
                 placeholder="Your Message"
                 required
                 rows={5}
-                className="w-full px-4 py-3 bg-dark-950/80 backdrop-blur-sm border border-gold-900/30 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-gold-500/50 transition-colors resize-none"
+                className="w-full px-4 py-3 bg-dark-950/80 backdrop-blur-sm border border-blue-900/30 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors resize-none"
               />
             </div>
             <button
               type="submit"
               disabled={sending}
-              className="w-full py-3 bg-gold-500 text-dark-950 rounded-lg font-semibold hover:bg-gold-400 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full py-3 bg-blue-500 text-dark-950 rounded-lg font-semibold hover:bg-blue-400 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2"
             >
               {sending ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
