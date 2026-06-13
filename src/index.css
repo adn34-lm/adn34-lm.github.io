@@ -5,6 +5,24 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --clr-btn-default: #0066FF;
+    --clr-btn-default-hover: #0052cc;
+    --clr-btn-outline-border: rgba(0, 102, 255, 0.3);
+    --clr-btn-outline-hover-bg: rgba(0, 102, 255, 0.1);
+    --clr-btn-outline-text: #0066FF;
+    --clr-btn-link: #0066FF;
+  }
+
+  [data-theme='light'] {
+    --clr-btn-default: #ef4444;
+    --clr-btn-default-hover: #dc2626;
+    --clr-btn-outline-border: rgba(239, 68, 68, 0.35);
+    --clr-btn-outline-hover-bg: rgba(239, 68, 68, 0.1);
+    --clr-btn-outline-text: #ef4444;
+    --clr-btn-link: #ef4444;
+  }
+
   body {
     @apply bg-dark-950 text-white/90 font-body;
   }
@@ -126,7 +144,7 @@
 [data-theme='light'] .bg-zinc-700 { background: #d1d5db; }
 [data-theme='light'] .peer:checked ~ .bg-zinc-700 { background: #0066FF !important; }
 
-/* Spotlight - hide in light mode */
+/* Spotlight - reduce in light mode */
 [data-theme='light'] .spotlight { opacity: 0.15; }
 
 

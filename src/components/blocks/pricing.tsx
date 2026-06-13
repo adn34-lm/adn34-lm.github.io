@@ -126,9 +126,9 @@ export function Pricing({
             )}
           >
             {plan.isPopular && (
-              <div className="absolute top-0 right-0 bg-blue-500 py-0.5 px-2 rounded-bl-xl rounded-tr-xl flex items-center">
-                <Star className="text-dark-950 h-4 w-4 fill-current" />
-                <span className="text-dark-950 ml-1 font-sans font-semibold text-xs">
+              <div className="absolute top-0 right-0 bg-[var(--clr-btn-default)] py-0.5 px-2 rounded-bl-xl rounded-tr-xl flex items-center">
+                <Star className="text-white h-4 w-4 fill-current" />
+                <span className="text-white ml-1 font-sans font-semibold text-xs">
                   Popular
                 </span>
               </div>
@@ -193,10 +193,10 @@ export function Pricing({
                     variant: plan.isPopular ? "default" : "outline",
                   }),
                   "group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter",
-                  "transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-blue-500 hover:ring-offset-1",
+                  "transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-[var(--clr-btn-outline-text)] hover:ring-offset-1",
                   plan.isPopular
-                    ? "bg-blue-500 text-dark-950 hover:bg-blue-400"
-                    : "border-blue-500/30 text-blue-400 hover:bg-blue-500/10"
+                    ? "bg-[var(--clr-btn-default)] text-white hover:bg-[var(--clr-btn-default-hover)]"
+                    : ""
                 )}
               >
                 {plan.buttonText}

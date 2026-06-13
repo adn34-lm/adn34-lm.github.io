@@ -91,7 +91,7 @@ export default function ContactSection() {
             <button
               type="submit"
               disabled={sending}
-              className="w-full py-3 bg-blue-500 text-dark-950 rounded-lg font-semibold hover:bg-blue-400 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full py-3 bg-[var(--clr-btn-default)] text-white rounded-lg font-semibold hover:bg-[var(--clr-btn-default-hover)] disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2"
             >
               {sending ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
