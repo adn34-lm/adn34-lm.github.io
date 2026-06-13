@@ -1,9 +1,11 @@
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import ThemeToggle from '@/components/ui/theme-toggle';
 
 const navLinks = [
   { href: '#inicio', label: 'home' },
   { href: '#servicios', label: 'services' },
+  { href: '#blog', label: 'blog' },
   { href: '#precios', label: 'pricing' },
   { href: '#contacto', label: 'contact' },
 ];
@@ -13,7 +15,7 @@ export default function Header() {
   const [active, setActive] = useState('');
 
   useEffect(() => {
-    const ids = ['inicio', 'servicios', 'precios', 'contacto'];
+    const ids = ['inicio', 'servicios', 'blog', 'precios', 'contacto'];
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -53,14 +55,18 @@ export default function Header() {
                 {link.label}
               </a>
             ))}
+            <ThemeToggle />
           </nav>
 
-          <button
-            className="md:hidden text-white/80 hover:text-blue-400 transition-colors"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <button
+              className="text-white/80 hover:text-blue-400 transition-colors"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
