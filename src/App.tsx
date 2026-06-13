@@ -6,6 +6,7 @@ import ContactSection from '@/components/sections/ContactSection';
 import FooterSection from '@/components/sections/FooterSection';
 import OptimizedMeshGradient from '@/components/ui/optimized-mesh-gradient';
 import ScrollProgressBar from '@/components/ui/scroll-progress';
+import TawkToChat from '@/components/ui/tawkto-chat';
 import { ReactLenis } from 'lenis/react';
 
 function SectionDivider() {
@@ -20,6 +21,7 @@ export default function App() {
   return (
     <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
       <div className="min-h-screen bg-dark-950">
+        <TawkToChat />
         <ScrollProgressBar />
         <Header />
         <main>
