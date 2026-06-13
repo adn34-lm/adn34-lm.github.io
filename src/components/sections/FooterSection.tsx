@@ -6,10 +6,7 @@ export default function FooterSection() {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <span className="text-2xl font-bold tracking-tight">
-              <span className="text-blue-400">LM</span>{' '}
-              <span className="text-white/60 font-light">STUDIO</span>
-            </span>
+            <img src="/logo.svg" alt="LM Studio" className="h-10 w-auto" />
             <p className="text-neutral-500 text-sm mt-2">
               Engineering next-gen software solutions.
             </p>

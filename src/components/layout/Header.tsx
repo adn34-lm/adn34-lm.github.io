@@ -35,9 +35,8 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-dark-950/80 backdrop-blur-md border-b border-blue-900/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <a href="#inicio" className="text-2xl font-bold tracking-tight">
-            <span className="text-blue-400">LM</span>{' '}
-            <span className="text-white/80 font-light">STUDIO</span>
+          <a href="#inicio" className="flex items-center gap-3">
+            <img src="/logo.svg" alt="LM Studio" className="h-8 w-auto" />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
