@@ -178,6 +178,17 @@
 [data-theme='light'] .placeholder-white\/30 { color: #9ca3af; }
 [data-theme='light'] hr { border-color: #e2e8f0 !important; }
 
+/* ── Contact form inputs ── */
+[data-theme='light'] #contacto input,
+[data-theme='light'] #contacto textarea {
+  background: #fff5f5;
+  border-color: #fca5a5 !important;
+}
+[data-theme='light'] #contacto input:focus,
+[data-theme='light'] #contacto textarea:focus {
+  border-color: #ef4444 !important;
+}
+
 /* ── Switch ── */
 [data-theme='light'] .bg-zinc-700 { background: #d1d5db; }
 [data-theme='light'] .bg-dark-700 { background: #d1d5db; }
