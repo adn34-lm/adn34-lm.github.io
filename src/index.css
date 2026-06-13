@@ -185,6 +185,21 @@
 /* ── Spotlight ── */
 [data-theme='light'] .spotlight { opacity: 0.15; }
 
+/* ── Section heading/body text that uses .text-white ── */
+[data-theme='light'] #contacto .text-white,
+[data-theme='light'] #precios .text-white,
+[data-theme='light'] #servicios .text-white,
+[data-theme='light'] #blog .text-white,
+[data-theme='light'] #inicio .text-white:not(button) {
+  color: #111827;
+}
+
+/* ── Contact / pricing input text ── */
+[data-theme='light'] #contacto input,
+[data-theme='light'] #contacto textarea {
+  color: #111827;
+}
+
 /* ── Scroll progress bar ── */
 [data-theme='light'] .from-blue-400.scroll-bar,
 [data-theme='light'] [class*="scroll-bar"] {
