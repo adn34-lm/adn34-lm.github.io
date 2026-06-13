@@ -5,6 +5,8 @@ import PricingSection from '@/components/sections/PricingSection';
 import ContactSection from '@/components/sections/ContactSection';
 import FooterSection from '@/components/sections/FooterSection';
 import OptimizedMeshGradient from '@/components/ui/optimized-mesh-gradient';
+import ScrollProgressBar from '@/components/ui/scroll-progress';
+import { ReactLenis } from 'lenis/react';
 
 function SectionDivider() {
   return (
@@ -16,23 +18,26 @@ function SectionDivider() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-dark-950">
-      <Header />
-      <main>
-        <HeroSection />
-        <SectionDivider />
-        <ServicesSection />
-        <SectionDivider />
+    <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
+      <div className="min-h-screen bg-dark-950">
+        <ScrollProgressBar />
+        <Header />
+        <main>
+          <HeroSection />
+          <SectionDivider />
+          <ServicesSection />
+          <SectionDivider />
 
-        <div className="relative overflow-hidden">
-          <OptimizedMeshGradient />
-          <div className="relative z-10">
-            <PricingSection />
-            <ContactSection />
+          <div className="relative overflow-hidden">
+            <OptimizedMeshGradient />
+            <div className="relative z-10">
+              <PricingSection />
+              <ContactSection />
+            </div>
           </div>
-        </div>
-      </main>
-      <FooterSection />
-    </div>
+        </main>
+        <FooterSection />
+      </div>
+    </ReactLenis>
   );
 }
