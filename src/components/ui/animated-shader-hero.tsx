@@ -293,11 +293,11 @@ const Hero: React.FC<HeroProps> = ({
   const canvasRef = useShaderBackground(theme);
 
   return (
-    <div className={`relative w-full h-screen overflow-hidden ${isLight ? 'bg-blue-50' : 'bg-black'} ${className}`}>
+    <div className={`relative w-full h-screen overflow-hidden ${isLight ? 'bg-red-50' : 'bg-black'} ${className}`}>
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full object-contain touch-none"
-        style={{ background: isLight ? '#f0f5ff' : 'black' }}
+        style={{ background: isLight ? '#fef2f2' : 'black' }}
       />
 
       <div className={`absolute inset-0 z-10 flex flex-col items-center justify-center ${isLight ? 'text-gray-900' : 'text-white'}`}>
@@ -459,10 +459,10 @@ void main(void) {
   for (float i=1.; i<12.; i++) {
     uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
     vec2 p=uv; float d=length(p);
-    col+=.00125/d*(cos(sin(i)*vec3(0.6,0.8,1.0))+1.);
+    col+=.00125/d*(cos(sin(i)*vec3(1.0,0.3,0.2))+1.);
     float b=noise(i+p+bg*1.731);
     col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)));
-    col=mix(col,vec3(bg*.82+.1,bg*.88+.05,bg*.96),d);
+    col=mix(col,vec3(1.0,bg*.78+.05,bg*.72+.05),d);
   }
   O=vec4(col,1);
 }`;

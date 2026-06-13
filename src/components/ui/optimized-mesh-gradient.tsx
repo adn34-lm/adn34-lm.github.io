@@ -3,7 +3,7 @@ import { MeshGradient } from '@paper-design/shaders-react'
 import { useTheme } from '@/hooks/use-theme'
 
 const darkColors = ["#000000", "#001a4d", "#000d26", "#0066FF"]
-const lightColors = ["#e0ecff", "#b3d0ff", "#ffffff", "#0066FF"]
+const lightColors = ["#ffffff", "#fecaca", "#fca5a5", "#ef4444"]
 
 export default function OptimizedMeshGradient() {
   const ref = useRef<HTMLDivElement>(null)

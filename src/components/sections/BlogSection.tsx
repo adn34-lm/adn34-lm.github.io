@@ -61,7 +61,7 @@ export default function BlogSection() {
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(5,11,26,0.6), transparent, transparent)' }} />
                 </div>
 
                 <div className="p-6 sm:p-8">
